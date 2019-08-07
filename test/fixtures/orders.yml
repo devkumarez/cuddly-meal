@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  address: one
+  menu: one
+  delivery_status: 1
+  total_credit: 9.99
+
+two:
+  user: two
+  address: two
+  menu: two
+  delivery_status: 1
+  total_credit: 9.99
