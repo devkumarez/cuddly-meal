@@ -70,6 +70,11 @@ ActiveRecord::Schema.define(version: 2019_08_07_175125) do
     t.string "nickname"
     t.string "image"
     t.string "email"
+    t.integer "sign_in_count", default: 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.json "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

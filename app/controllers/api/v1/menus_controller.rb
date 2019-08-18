@@ -1,4 +1,4 @@
-class MenusController < ApplicationController
+class Api::V1::MenusController < Api::V1::BaseController
   before_action :set_menu, only: [:show, :edit, :update, :destroy]
 
   # GET /menus
@@ -30,7 +30,7 @@ class MenusController < ApplicationController
     respond_to do |format|
       if @menu.save
         format.html { redirect_to @menu, notice: 'Menu was successfully created.' }
-        format.json { render :show, status: :created, location: @menu }
+        format.json { render :show, status: :created }
       else
         format.html { render :new }
         format.json { render json: @menu.errors, status: :unprocessable_entity }
