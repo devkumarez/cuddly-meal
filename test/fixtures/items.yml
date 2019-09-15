@@ -1,16 +1,10 @@
 # == Schema Information
 #
-# Table name: menus
+# Table name: items
 #
 #  id          :bigint           not null, primary key
 #  name        :string
-#  category    :integer
-#  food_type   :integer
-#  available   :integer
-#  items       :text
 #  description :text
-#  price       :decimal(, )
-#  status      :boolean
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -19,20 +13,8 @@
 
 one:
   name: MyString
-  category: 1
-  food_type: 1
-  available: 1
-  items: MyText
   description: MyText
-  price: 9.99
-  status: false
 
 two:
   name: MyString
-  category: 1
-  food_type: 1
-  available: 1
-  items: MyText
   description: MyText
-  price: 9.99
-  status: false

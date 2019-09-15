@@ -25,8 +25,10 @@ class Api::V1::MenusController < Api::V1::BaseController
   # POST /menus
   # POST /menus.json
   def create
-    @menu = Menu.new(menu_params)
-
+    parms = menu_params.dup
+    menu_items = parms.delete(:menu_items)
+    @menu = Menu.new(parms)
+    @menu.items << Item.where(id: menu_items)
     respond_to do |format|
       if @menu.save
         format.html { redirect_to @menu, notice: 'Menu was successfully created.' }
@@ -70,6 +72,6 @@ class Api::V1::MenusController < Api::V1::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def menu_params
-      params.require(:menu).permit(:name, :category, :food_type, :available, :items, :description, :price, :status)
+      params.require(:menu).permit(:name, :category, :food_type, :available, {:menu_items => []}, :description, :price, :status)
     end
 end

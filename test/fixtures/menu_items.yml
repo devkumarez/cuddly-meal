@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: menu_items
+#
+#  id         :bigint           not null, primary key
+#  menu_id    :bigint
+#  item_id    :bigint
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  menu: one
+  item: one
+
+two:
+  menu: two
+  item: two
