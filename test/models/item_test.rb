@@ -1,23 +1,17 @@
 # == Schema Information
 #
-# Table name: menus
+# Table name: items
 #
 #  id          :bigint           not null, primary key
 #  name        :string
-#  category    :integer
-#  food_type   :integer
-#  available   :integer
-#  items       :text
 #  description :text
-#  price       :decimal(, )
-#  status      :boolean
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 require 'test_helper'
 
-class MenuTest < ActiveSupport::TestCase
+class ItemTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

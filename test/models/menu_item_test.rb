@@ -1,22 +1,17 @@
 # == Schema Information
 #
-# Table name: addresses
+# Table name: menu_items
 #
 #  id         :bigint           not null, primary key
-#  street     :string
-#  city       :string
-#  state      :string
-#  country    :string
-#  landmark   :string
-#  zip        :integer
-#  user_id    :bigint
+#  menu_id    :bigint
+#  item_id    :bigint
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'test_helper'
 
-class AddressTest < ActiveSupport::TestCase
+class MenuItemTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
