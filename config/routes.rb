@@ -63,7 +63,12 @@ Rails.application.routes.draw do
       
       resources :orders
       resources :addresses
-      resources :menus
+      resources :menus do
+        collection do
+          get :weekly_menu
+          get :menu_categories
+        end
+      end
       resources :items
     end
   end
