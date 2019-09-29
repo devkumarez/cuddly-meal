@@ -4,8 +4,16 @@ class Api::V1::MenusController < Api::V1::BaseController
   # GET /menus
   # GET /menus.json
   def index
-
     @menus = Menu.active.where(available: params[:meal_hour])
+  end
+
+  def weekly_menu
+    @menus = Week.find_by_day(params[:day]).menus
+    render :index
+  end
+
+  def menu_categories
+    render json: { categories: Menu::categories.keys }
   end
 
   # GET /menus/1
@@ -25,12 +33,14 @@ class Api::V1::MenusController < Api::V1::BaseController
   # POST /menus
   # POST /menus.json
   def create
-    parms = menu_params.dup
-    menu_items = parms.delete(:menu_items)
-    @menu = Menu.new(parms)
+    params = menu_params.dup
+    menu_items = params.delete(:menu_items)
+    day = Week.where(day: params.delete(:day)).first
+    @menu = Menu.new(params)
     @menu.items << Item.where(id: menu_items)
     respond_to do |format|
       if @menu.save
+        day.menus << @menu
         format.html { redirect_to @menu, notice: 'Menu was successfully created.' }
         format.json { render :show, status: :created }
       else
@@ -72,6 +82,6 @@ class Api::V1::MenusController < Api::V1::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def menu_params
-      params.require(:menu).permit(:name, :category, :food_type, :available, {:menu_items => []}, :description, :price, :status)
+      params.require(:menu).permit(:name, :category, :food_type, :available, {:menu_items => []}, :description, :price, :status, :day)
     end
 end
