@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_29_125029) do
+ActiveRecord::Schema.define(version: 2019_10_20_110453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,38 @@ ActiveRecord::Schema.define(version: 2019_09_29_125029) do
     t.index ["address_id"], name: "index_orders_on_address_id"
     t.index ["menu_id"], name: "index_orders_on_menu_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.jsonb "payment_json", default: {}
+    t.string "payable_type"
+    t.bigint "payable_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payable_type", "payable_id"], name: "index_payments_on_payable_type_and_payable_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "name"
+    t.decimal "total_credit"
+    t.decimal "total_price"
+    t.boolean "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_credits", force: :cascade do |t|
+    t.bigint "user_id"
+    t.decimal "credit"
+    t.string "created_by_type"
+    t.bigint "created_by_id"
+    t.integer "transaction_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_by_type", "created_by_id"], name: "index_user_credits_on_created_by_type_and_created_by_id"
+    t.index ["user_id"], name: "index_user_credits_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

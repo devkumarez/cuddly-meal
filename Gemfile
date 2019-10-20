@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise_token_auth'
 gem 'rack-cors'
+gem 'razorpay'
 
 
 

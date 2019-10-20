@@ -61,7 +61,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       mount_devise_token_auth_for 'User', at: 'auth'
       
-      resources :orders
+      resources :orders do
+      end
       resources :addresses
       resources :menus do
         collection do
@@ -70,6 +71,9 @@ Rails.application.routes.draw do
         end
       end
       resources :items
+      resources :plans
+      get 'payment/initiate_payment'
+      post 'payment/buy_plan'
     end
   end
   
