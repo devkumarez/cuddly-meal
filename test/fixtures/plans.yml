@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  total_credit: 9.99
+  total_price: 9.99
+  status: false
+
+two:
+  name: MyString
+  total_credit: 9.99
+  total_price: 9.99
+  status: false
