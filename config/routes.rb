@@ -59,7 +59,9 @@ Rails.application.routes.draw do
   root 'home#index'
   scope module: :api, defaults: {format: :json} do
     namespace :v1 do
-      mount_devise_token_auth_for 'User', at: 'auth'
+      mount_devise_token_auth_for 'User', at: 'auth', controllers: { 
+        omniauth_callbacks: "api/v1/omniauth_callbacks"
+       }
       
       resources :orders do
       end

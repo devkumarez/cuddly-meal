@@ -38,6 +38,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise_token_auth'
 gem 'rack-cors'
 gem 'razorpay'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 
 
