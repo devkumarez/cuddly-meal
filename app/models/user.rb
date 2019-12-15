@@ -36,7 +36,6 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  include DeviseTokenAuth::Concerns::User
   devise :omniauthable, omniauth_providers: %i[facebook google]
 
   has_many :payments
@@ -54,4 +53,24 @@ class User < ActiveRecord::Base
       # user.skip_confirmation!
     end
   end
+  
+  # def generate_jwt
+  #   JWT.encode({ id: id,
+  #               exp: 60.days.from_now.to_i },
+  #             Rails.application.secrets.secret_key_base, 'HS256')
+  # end
+
+  def generate_jwt
+    payload = {
+      id: id,
+    }
+    secret = Rails.application.secrets.secret_key_base # TODO:
+    token = JWT.encode payload, secret, 'HS256'
+  end
+
+  def self.decode_token token
+    secret = Rails.application.secrets.secret_key_base # TODO:
+    decoded_token = JWT.decode token, secret, true, { algorithm: 'HS256' }
+  end
+
 end

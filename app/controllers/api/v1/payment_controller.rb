@@ -1,5 +1,6 @@
 class Api::V1::PaymentController < Api::V1::BaseController
-
+  before_action :authenticate_user
+  
   def initiate_payment
     plan = Plan.find(params[:plan_id])
     order = Razorpay::Order.create amount: plan.total_price_to_paise.to_i, currency: 'INR', receipt: 'TEST' 
