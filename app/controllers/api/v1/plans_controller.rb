@@ -1,6 +1,6 @@
 class Api::V1::PlansController < Api::V1::BaseController
   before_action :set_plan, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user
+  # before_action :authenticate_user
   # GET /plans
   # GET /plans.json
   def index

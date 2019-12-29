@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
 
   has_many :payments
   has_many :user_credits
+  has_many :addresses
 
 
   def self.from_omniauth(auth)

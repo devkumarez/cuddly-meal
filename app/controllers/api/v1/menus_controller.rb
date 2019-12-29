@@ -1,6 +1,6 @@
 class Api::V1::MenusController < Api::V1::BaseController
   before_action :set_menu, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user
+  # before_action :authenticate_user
 
   # GET /menus
   # GET /menus.json
@@ -9,7 +9,12 @@ class Api::V1::MenusController < Api::V1::BaseController
   end
 
   def weekly_menu
+    category= nil
     @menus = Week.find_by_day(params[:day]).menus
+    if category = params[:category].to_s.downcase && category.present?
+      @menus = @menus.where(category: category) 
+    end
+    
     render :index
   end
 

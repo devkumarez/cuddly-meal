@@ -1,0 +1,3 @@
+class Messenger < MessengerBase
+  
+end

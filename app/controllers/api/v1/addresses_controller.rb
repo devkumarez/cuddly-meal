@@ -1,6 +1,6 @@
 class Api::V1::AddressesController < Api::V1::BaseController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user
+  # before_action :authenticate_user
   
   # GET /addresses
   # GET /addresses.json
@@ -25,12 +25,12 @@ class Api::V1::AddressesController < Api::V1::BaseController
   # POST /addresses
   # POST /addresses.json
   def create
-    @address = Address.new(address_params)
+    @address = current_user.addresses.new(address_params)
 
     respond_to do |format|
       if @address.save
         format.html { redirect_to @address, notice: 'Address was successfully created.' }
-        format.json { render :show, status: :created, location: @address }
+        format.json { render :show, status: :created }
       else
         format.html { render :new }
         format.json { render json: @address.errors, status: :unprocessable_entity }
@@ -44,7 +44,7 @@ class Api::V1::AddressesController < Api::V1::BaseController
     respond_to do |format|
       if @address.update(address_params)
         format.html { redirect_to @address, notice: 'Address was successfully updated.' }
-        format.json { render :show, status: :ok, location: @address }
+        format.json { render :show, status: :ok }
       else
         format.html { render :edit }
         format.json { render json: @address.errors, status: :unprocessable_entity }
@@ -70,6 +70,6 @@ class Api::V1::AddressesController < Api::V1::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def address_params
-      params.require(:address).permit(:street, :city, :state, :country, :landmark, :zip, :user_id)
+      params.require(:address).permit(:name, :drop_at, :building, :locality, :street, :city, :state, :country, :landmark, :zip)
     end
 end

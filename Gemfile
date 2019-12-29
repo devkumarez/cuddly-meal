@@ -41,6 +41,7 @@ gem 'rack-cors'
 gem 'razorpay'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'rest-client', '~> 2.1'
 
 
 

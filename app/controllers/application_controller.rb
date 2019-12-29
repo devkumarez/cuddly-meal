@@ -36,7 +36,9 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= super || User.find(@current_user_id)
+    # todo please remove user.last when auth is ready
+    # @current_user ||= super || User.find(@current_user_id)
+    User.last
   end
 
   def signed_in?
