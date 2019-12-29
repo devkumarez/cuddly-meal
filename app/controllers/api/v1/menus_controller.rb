@@ -9,12 +9,11 @@ class Api::V1::MenusController < Api::V1::BaseController
   end
 
   def weekly_menu
-    category= nil
+    category = params[:category].to_s.downcase
+    food_type = params[:food_type].to_s.downcase
     @menus = Week.find_by_day(params[:day]).menus
-    if category = params[:category].to_s.downcase && category.present?
-      @menus = @menus.where(category: category) 
-    end
-    
+    @menus = @menus.where(category: category) if category.present?
+    @menus = @menus.where(category: food_type) if food_type.present? && @menus.present?
     render :index
   end
 
