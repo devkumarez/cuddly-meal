@@ -63,6 +63,8 @@ Rails.application.routes.draw do
         registrations: 'api/v1/users/registrations',
         sessions: 'api/v1/users/sessions'
       }
+
+      post 'social_login' => 'users/auth#social_login'
       
       resources :orders do
       end
