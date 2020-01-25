@@ -70,6 +70,6 @@ class Api::V1::AddressesController < Api::V1::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def address_params
-      params.require(:address).permit(:name, :drop_at, :building, :locality, :street, :city, :state, :country, :landmark, :zip)
+      params.require(:address).permit(:name, :drop_at, :building, :locality, :street, :city, :state, :country, :landmark, :zip, :line_1, :line_2)
     end
 end

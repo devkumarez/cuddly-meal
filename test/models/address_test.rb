@@ -12,6 +12,10 @@
 #  user_id    :bigint
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  drop_at    :string
+#  name       :string
+#  building   :string
+#  locality   :string
 #
 
 require 'test_helper'

@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: weeks
+#
+#  id         :bigint           not null, primary key
+#  day        :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Week < ApplicationRecord
   enum day: [:sunday, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday]
   

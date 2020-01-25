@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: payments
+#
+#  id           :bigint           not null, primary key
+#  payment_json :jsonb
+#  payable_type :string
+#  payable_id   :bigint
+#  user_id      :bigint
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 class Payment < ApplicationRecord
   belongs_to :payable, polymorphic: true
   has_many :user_credits, as: :created_by

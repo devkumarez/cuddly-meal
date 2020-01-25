@@ -7,7 +7,6 @@
 #  category    :integer
 #  food_type   :integer
 #  available   :integer
-#  items       :text
 #  description :text
 #  price       :decimal(, )
 #  status      :boolean

@@ -1,17 +1,19 @@
 # == Schema Information
 #
-# Table name: weekly_menus
+# Table name: providers
 #
 #  id         :bigint           not null, primary key
-#  week_id    :bigint
-#  menu_id    :bigint
+#  uid        :string
+#  provider   :string
+#  email      :string
+#  user_id    :bigint
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'test_helper'
 
-class WeeklyMenuTest < ActiveSupport::TestCase
+class ProviderTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

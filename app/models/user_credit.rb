@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: user_credits
+#
+#  id               :bigint           not null, primary key
+#  user_id          :bigint
+#  credit           :decimal(, )
+#  created_by_type  :string
+#  created_by_id    :bigint
+#  transaction_type :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
 class UserCredit < ApplicationRecord
   belongs_to :user
   belongs_to :created_by, polymorphic: true
